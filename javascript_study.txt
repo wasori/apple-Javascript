@@ -257,6 +257,24 @@ Q. 이벤트 리스너는?
 
 [setTimeout 타이머 주는법 ]
 
+- X초 후 코드를 실행하려면 : setTimeout ( function () { 실행할코드 } , ms )
+
+- X초 마다 코드실행하려면 : setInterval ( function () { 실행할코드 } , ms )
+
+- if var function => 자바스크립트 문법
+
+- document.querySelector() , setTimeout() , alert() => 브라우저 사용법 => web browserAPI 라고함
+
+- 자바스크립트문법과 브라우저 사용법은 다른것
+
+- 콜백함수 자리엔 만들어둔 함수 넣을 수 있음
+
+        setTimeout(함수, 1000)
+
+        function 함수() {
+            console.log('안녕');
+        }
+
 
 
 

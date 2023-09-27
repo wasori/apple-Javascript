@@ -94,8 +94,20 @@
     </div>
 
     <div class="alert alert-danger">
-        5초 이내 구매시 사은품 증정!
+        <span id = "alert-sec">5</span>초 이내 구매시 사은품 증정!
     </div>
+
+    <script>
+
+        setInterval(함수, 1000)
+
+        function 함수() {
+            if ($('#alert-sec').val() == "5"){
+                console.log($('#alert-sec').val());
+            }
+        }
+
+    </script>
 
     <script>
 
