@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <p>태조 이성계가 태어난 년도는?</p>
+    <form>
+        <input type="text" id="answer">
+        <button type="submit" id="send-answer">제출</button>
+    </form>
+
+    <script>
+        const answer = 1335;
+        var life = 3;
+
+        $('#send-answer').on('click',function(e){
+            if($('#answer').val() == answer){
+                alert('성공');
+            }else if($('#answer').val() != answer){
+                alert('실패... 남은기회' + life + '번')
+                life -= 1;
+                e.preventDefault();
+            }else if(life == 0){
+                alert('멍청아');
+                e.preventDefault();
+            }
+        })
+    </script>
+</body>
+
+</html>
