@@ -34,6 +34,27 @@
             }
         })
     </script>
+    <script>
+        console.log(time(2,10) + 'ms');
+        function time(min,sec){
+            var total = min * 60 + sec;
+            return total * 1000;
+        }
+    </script>
+    <script>
+        console.log(sale(10,true));
+        console.log(sale(70,false));
+        function sale(a, b) {
+            let result;
+            if (b == true) {
+                result = a - (a * 0.1) - 1.5;
+                return result
+            }else if (b == false) {
+                result = a - (a * 0.1);
+                return result
+            }
+        }
+    </script>
 </body>
 
 </html>

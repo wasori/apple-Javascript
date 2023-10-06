@@ -31,6 +31,16 @@
             </form>
         </div>
     </div>
+    
+    <script>
+        $('.black-bg').on('click',function(e){
+            console.log(e.target);
+            console.log( document.querySelector('.black-bg'));
+            if( e.target == document.querySelector('.black-bg') ) {
+                $('.black-bg').removeClass('show-modal');
+            }
+        })
+    </script>
 
     <script>
         $('#email').on('change', function () {
@@ -67,6 +77,16 @@
     </nav>
 
     <script>
+        $(window).on('scroll', function () {
+            if (window.scrollY >= 100) {
+                $('.navbar-brand').css('font-size', '20px');
+            } else if (window.scrollY < 100) {
+                $('.navbar-brand').css('font-size', '25px');
+            }
+        })
+    </script>
+
+    <script>
 
         let 이름 = 'kim';
 
@@ -95,6 +115,29 @@
         <h4>Shirts on Sale</h4>
         <button id="login" class="btn btn-danger">로그인</button>
     </div>
+
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit
+        debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur
+        praesentium exercitationem.
+    </div>
+
+    <script>
+        $('.lorem').on('scroll', function () {
+            var 스크롤양 = document.querySelector('.lorem').scrollTop;
+            var 실제높이 = document.querySelector('.lorem').scrollHeight;
+            var 보이는박스높이 = document.querySelector('.lorem').clientHeight;
+            console.log(스크롤양, 실제높이, 보이는박스높이);
+            if(스크롤양 + 보이는박스높이 > 실제높이 - 5){
+                alert('다읽음');
+            }
+        })
+
+        var 현재페이지 = document.querySelector('html').clientHeight;
+    </script>
+
+    <div style="height: 1000px;"></div>
+
     <div style="overflow: hidden;">
         <div class="slide-container">
             <div class="slide-box">
