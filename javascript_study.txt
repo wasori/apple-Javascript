@@ -678,3 +678,49 @@ Q. 이벤트 리스너는?
 -  둘 중에 맘에드는거 ㄱ.  html을 다 읽어들였는지 알려주는 이벤트리스너
 
 -  load 이벤트리스너
+
+================================================================================
+
+[ 장바구니 기능과 localStorage ]
+
+- 구매버튼 누르면 장바구니에 상품명 추가? -> 실제 서비스면 서버로 보냈을듯
+
+- 변수는 새로고침할때마다 리셋이돼서 영구적으로 저장하기엔 적합하진 않음
+
+- 브라우저 안에 몰래 데이터 저장가능 ( 웹개발자도구 -> 애플리케이션 )
+
+- 로컬 스토리지, 세션 스토리지 : 이름 : 값 형태로 저장가능. 용량은 5MB , 문자/ 숫자만 저장가능
+
+- 세션 스토리지는 사이트 나가면 자동삭제. 로컬 스토리지는 사이트 재접속해도 유지
+
+- IndexedDB : 구조화된 대용량 데이터 저장시
+
+- Cookies : 보통 로그인정보 저장
+
+- Cache Storage : html, js, css 파일 저장하는곳
+
+- 로컬 스토리지 저장하려면 : localStorage.setItem('이름', 'kim');
+
+- 로컬 스토리지 출력하려면 : localStorage.getItem('이름');
+
+- 로컬 스토리지 제거하려면 : localStorage.removeItem('이름');
+
+- 로컬 스토리지에 array, object 저장하려면 : 그냥 저장하면 대괄호 풀리고 그냥 저장됨
+
+- array/object -> JSON으로 바꾸면 저장가능
+
+-  var arr = [1,2,3];
+
+    var newArr = JSON.stringify(arr);
+
+    var 꺼낸거 = localStorage.getItem('num');
+  
+    console.log(꺼낸거); => 확인해보면 [1,2,3] 이긴한데 그냥 문자열임. array가 아니라서 데이터 못뺌
+
+-  array / object => JSON : JSON.stringify();
+
+-  JSON => array / object : JSON.parse();
+
+-  localStorage 데이터 수정?  1. 자료 꺼냄 2. 꺼낸거 수정함 3. 다시 넣음
+
+- (팁) 내 형제요소 (sibling) 찾는법 

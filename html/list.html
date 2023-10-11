@@ -30,42 +30,42 @@
     </div>
 
     <div class="container my-3">
-        <button class="btn btn-danger" id = "price">가격순 정렬</button>
+        <button class="btn btn-danger" id="price">가격순 정렬</button>
     </div>
     <div class="container my-3">
-        <button class="btn btn-danger" id = "danaga">다나가순 정렬</button>
+        <button class="btn btn-danger" id="danaga">다나가순 정렬</button>
     </div>
     <div class="container my-3">
-        <button class="btn btn-danger" id = "under">6만원 이하 상품만 보기</button>
+        <button class="btn btn-danger" id="under">6만원 이하 상품만 보기</button>
     </div>
 
     <script>
 
-        var 어레이 = [7,3,5,2,40];
-        var 어레이2 = ['a','c','b'];
+        var 어레이 = [7, 3, 5, 2, 40];
+        var 어레이2 = ['a', 'c', 'b'];
 
 
-        어레이2.sort(function(a,b){
+        어레이2.sort(function (a, b) {
             return b < a;
         });
 
-        어레이.filter(function(a){
+        어레이.filter(function (a) {
             return a < 4;
         })
 
-        어레이.map(function(a){
+        어레이.map(function (a) {
             return a * 4;
         })
         console.log(어레이2);
-        
+
         var products = [
             { id: 0, price: 70000, title: 'Blossom Dress' },
             { id: 1, price: 50000, title: 'Springfield Shirt' },
             { id: 2, price: 60000, title: 'Black Monastery' }
         ];
 
-        $('#price').click(function(){
-            products.sort(function(a,b){
+        $('#price').click(function () {
+            products.sort(function (a, b) {
                 return a.price - b.price;
             })
 
@@ -74,11 +74,11 @@
             addcard(products);
         })
 
-        $('#danaga').click(function(){
-            products.sort(function(a,b){
-                if(a.title < b.title){
+        $('#danaga').click(function () {
+            products.sort(function (a, b) {
+                if (a.title < b.title) {
                     return 1;
-                }else
+                } else
                     return -1;
             })
 
@@ -87,8 +87,8 @@
             addcard(products);
         })
 
-        $('#under').click(function(){
-            var array = products.filter(function(a){
+        $('#under').click(function () {
+            var array = products.filter(function (a) {
                 return a.price <= 60000;
             })
 
@@ -99,25 +99,38 @@
 
         console.log(products);
 
-        function addcard (data) {
-            data.forEach((a,i) => {
+        function addcard(data) {
+            data.forEach((a, i) => {
                 var 템플릿 =
-                `<div class = "col-sm-4">
+                    `<div class = "col-sm-4">
                     <img src="https://via.placeholder.com/600" class = "w-100">
                     <h5>${a.title}</h5>
                     <p>가격 : ${a.price}</p>    
+                    <button class = "buy">구매</button>
                 </div>`;
                 $('.row').append(템플릿);
             })
         }
-        
+
         addcard(products);
+
+        $('.buy').click(function (e) {
+            var title = $(e.target).siblings('h5').text();
+
+            if (localStorage.getItem('cart') != null) {
+                var get_title = JSON.parse(localStorage.cart);
+                get_title.push(title);
+                localStorage.setItem('cart', JSON.stringify(get_title));
+            } else {
+                localStorage.setItem('cart', JSON.stringify([title]));
+            }
+        })
 
     </script>
 
 
     <div class="container">
-        <button class="btn btn-danger" id = "more">더보기</button>
+        <button class="btn btn-danger" id="more">더보기</button>
     </div>
 
     <script>
@@ -126,19 +139,19 @@
 
         $('#more').click(function () {
             add++;
-            if(add == 1){
-            $.get('https://codingapple1.github.io/js/more1.json')
-                .done((data) => {
-                    console.log(data);
-                    addcard(data);
-                })
-            } else if(add == 2){
+            if (add == 1) {
+                $.get('https://codingapple1.github.io/js/more1.json')
+                    .done((data) => {
+                        console.log(data);
+                        addcard(data);
+                    })
+            } else if (add == 2) {
                 $.get('https://codingapple1.github.io/js/more2.json')
-                .done((data) => {
-                    console.log(data);
-                    addcard(data);
-                    $('#more').addClass('form-hide');
-                })
+                    .done((data) => {
+                        console.log(data);
+                        addcard(data);
+                        $('#more').addClass('form-hide');
+                    })
             }
         })
     </script>
