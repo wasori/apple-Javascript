@@ -21,39 +21,82 @@
         const answer = 1335;
         var life = 3;
 
-        $('#send-answer').on('click',function(e){
-            if($('#answer').val() == answer){
+        $('#send-answer').on('click', function (e) {
+            if ($('#answer').val() == answer) {
                 alert('성공');
-            }else if($('#answer').val() != answer){
+            } else if ($('#answer').val() != answer) {
                 alert('실패... 남은기회' + life + '번')
                 life -= 1;
                 e.preventDefault();
-            }else if(life == 0){
+            } else if (life == 0) {
                 alert('멍청아');
                 e.preventDefault();
             }
         })
     </script>
     <script>
-        console.log(time(2,10) + 'ms');
-        function time(min,sec){
+        console.log(time(2, 10) + 'ms');
+        function time(min, sec) {
             var total = min * 60 + sec;
             return total * 1000;
         }
     </script>
     <script>
-        console.log(sale(10,true));
-        console.log(sale(70,false));
+        console.log(sale(10, true));
+        console.log(sale(70, false));
         function sale(a, b) {
             let result;
             if (b == true) {
                 result = a - (a * 0.1) - 1.5;
                 return result
-            }else if (b == false) {
+            } else if (b == false) {
                 result = a - (a * 0.1);
                 return result
             }
         }
+    </script>
+    <script>
+
+        var 출석부 = ['흥민', '영희', '철수', '재석'];
+
+        function 이름찾기(이름) {
+            출석부.forEach(function (a) {
+                if (a == 이름)
+                    console.log('있어요');
+            })
+        }
+
+        이름찾기('영희');
+
+    </script>
+    <script>
+        for (var i = 2; i < 10; i++) {
+            for (var j = 1; j < 10; j++) {
+                console.log(i * j);
+            }
+        }
+    </script>
+    <script>
+
+
+        function 평균점수계산기(성적들, 성적) {
+            var total = 0;
+            var mean, sub;
+            성적들.forEach(function (a) {
+                total += a;
+            })
+            mean = total / 성적들.length;
+            if (mean > 성적) {
+                sub = Math.abs(mean - 성적);
+                console.log("평균보다 " + sub + "점이 떨어졌네요 재수추천");
+            } else if(mean < 성적){
+                sub = Math.abs(mean - 성적);
+                console.log('평균보다 ' + sub + '점이 올랐네요');
+            }
+        }
+
+        평균점수계산기([10, 20, 30, 40, 50], 50);
+        평균점수계산기([40, 40, 40], 20);
     </script>
 </body>
 

@@ -29,22 +29,64 @@
     <select class="form-select mt-2">
       <option>모자</option>
       <option>셔츠</option>
+      <option>바지</option>
     </select>
     <select class="form-select mt-2 form-hide">
       <option>95</option>
       <option>100</option>
-      <option>105</option>
     </select>
   </form>
 
   <script>
 
+    var shirts = [95, 100, 105];
+    var pants = [28, 30, 32];
+
     $('.form-select').eq(0).on('input', function () {
       var value = $('.form-select').eq(0).val();
       if (value == '셔츠') {
         $('.form-select').eq(1).removeClass('form-hide');
+        $('.form-select').eq(1).html('');
+        shirts.forEach(function (a) {
+          $('.form-select').eq(1).append('<option>' + a + '</option>');
+        })
+      } else if (value == '바지') {
+        $('.form-select').eq(1).removeClass('form-hide');
+        $('.form-select').eq(1).html('');
+        pants.forEach((a) => {
+          $('.form-select').eq(1).append('<option>' + a + '</option>');
+        });
+      } else {
+        $('.form-select').eq(1).addClass('form-hide');
       }
     })
+
+    var obj = { name: 'kim', age: 20 };
+
+    for (var key in obj) {
+      console.log(obj[key]);
+    }
+
+  </script>
+
+  <script>
+
+    $.get('https://codingapple1.github.io/hello.txt')
+    .done(function (data) {
+      console.log(data);
+    })
+    .fail(function () {
+      console.log('실패함');
+    })
+
+    $.get('https://codingapple1.github.io/price.json')
+    .done(function(data){
+      console.log(data.price);
+    })
+    .fail(function () {
+      console.log('실패함');
+    })
+
   </script>
 
   <div class="container mt-5">
